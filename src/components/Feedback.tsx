@@ -210,7 +210,7 @@ export function Feedback({
                 rows={3}
                 value={whatToChange}
                 onChange={(e) => setWhatToChange(e.target.value)}
-                placeholder="e.g., Make gesture shortcuts more subtle, change the layout, adjust sensitivity settings..."
+                
                 className="mt-1 bg-background"
               />
             </div>
@@ -228,7 +228,7 @@ export function Feedback({
                 rows={3}
                 value={whatToRemove}
                 onChange={(e) => setWhatToRemove(e.target.value)}
-                placeholder="e.g., Remove voice commands if gestures are already available, remove..."
+                
                 className="mt-1 bg-background"
               />
             </div>
@@ -246,7 +246,7 @@ export function Feedback({
                 rows={3}
                 value={whatToAdd}
                 onChange={(e) => setWhatToAdd(e.target.value)}
-                placeholder="e.g., Auto live-captions integration, raise hand gesture, custom stream deck shortcuts..."
+                
                 className="mt-1 bg-background"
               />
             </div>

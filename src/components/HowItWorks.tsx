@@ -16,11 +16,11 @@ export function HowItWorks() {
     {
       icon: Mic,
       title: "Personal Voice Shortcuts",
-      desc: "Create custom spoken phrases for hands-free control. Choose whatever words feel natural to your speaking style.",
+      desc: "Create custom spoken phrases for hands free control. Choose whatever words feel natural to your speaking style.",
     },
     {
       icon: Sliders,
-      title: "Tailored to You",
+      title: "Adapted to You",
       desc: "Adjust every action and sensitivity to match your personal comfort. Works with your regular webcam with zero extra gear.",
     },
   ];
@@ -33,10 +33,10 @@ export function HowItWorks() {
             How It Works
           </h2>
           <p className="text-lg md:text-xl font-medium text-primary mb-3">
-            Fully customizable control. Zero friction.
+            Fully customizable control.
           </p>
           <p className="text-foreground/80 max-w-xl mx-auto">
-            Navix works with your existing webcam and microphone. Personalize every glance, gesture, and shortcut so your meetings adapt to you.
+            Navix works with your existing webcam and microphone. Personalize every gesture and shortcut so your meetings adapt to you.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
