@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Problem } from "@/components/Problem";
@@ -32,10 +31,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
-  const [feedback, setFeedback] = useState("");
-  const [feedbackEmail, setFeedbackEmail] = useState("");
-  const [interest, setInterest] = useState("probar");
-
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -48,15 +43,7 @@ function Landing() {
       <HowItWorks />
       <Audience />
       <Pricing />
-      <Feedback
-        feedback={feedback}
-        setFeedback={setFeedback}
-        feedbackEmail={feedbackEmail}
-        setFeedbackEmail={setFeedbackEmail}
-        plan="pro"
-        interest={interest}
-        setInterest={setInterest}
-      />
+      <Feedback />
       <Footer />
     </div>
   );

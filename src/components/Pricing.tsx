@@ -26,14 +26,16 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section id="precios" className="bg-gradient-dark text-primary-foreground py-24">
+    <section id="precios" className="bg-gradient-dark text-primary-foreground py-24 scroll-mt-10">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <Badge className="mb-4 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">
             Pricing Plans
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Planned Subscription Models</h2>
-          <p className="text-primary-foreground/70">
+          </h2>
+          <p className="text-lg md:text-xl font-medium text-primary-glow mb-3">
+            Planned Subscription Models
+          </p>
+          <p className="text-primary-foreground/75 max-w-xl mx-auto">
             Transparent pricing designed for individual professionals and collaborative teams.
           </p>
         </div>

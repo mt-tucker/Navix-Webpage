@@ -26,7 +26,7 @@ export function Navbar({ scrollTo }: NavbarProps) {
             onClick={() => scrollTo("para-quien")}
             className="hover:text-foreground transition-smooth"
           >
-            Audience
+            Who it's for
           </button>
           <button
             onClick={() => scrollTo("precios")}

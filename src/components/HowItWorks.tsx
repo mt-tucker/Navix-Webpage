@@ -1,41 +1,42 @@
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Eye, Hand, Mic, Sliders } from "lucide-react";
 
 export function HowItWorks() {
   const steps = [
     {
       icon: Eye,
-      title: "Eye Triggers",
-      desc: "Fully configurable eye-tracking hotspots. Assign any screen region to your preferred control action.",
+      title: "Look to Control",
+      desc: "Assign your own actions to simple glances. Choose which areas of your screen trigger the controls you use most.",
     },
     {
       icon: Hand,
-      title: "Hand Gestures",
-      desc: "Customize your own hand gestures for toggling mic, camera, reactions, or custom shortcuts.",
+      title: "Custom Hand Gestures",
+      desc: "Pick and define your own motions. Set up your favorite gestures to control any meeting action, your way.",
     },
     {
       icon: Mic,
-      title: "Voice Shortcuts",
-      desc: "Define custom voice commands tailored to your speaking style and meeting workflow.",
+      title: "Personal Voice Shortcuts",
+      desc: "Create custom spoken phrases for hands-free control. Choose whatever words feel natural to your speaking style.",
     },
     {
       icon: Sliders,
-      title: "Adaptive Setup",
-      desc: "Fine-tune sensitivities and custom mappings so every control feels effortless and natural.",
+      title: "Tailored to You",
+      desc: "Adjust every action and sensitivity to match your personal comfort. Works with your regular webcam with zero extra gear.",
     },
   ];
 
   return (
-    <section id="como" className="bg-secondary/40 py-24">
+    <section id="como" className="bg-secondary/40 py-24 scroll-mt-10">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <Badge className="mb-4" variant="outline">How it works</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Fully customizable control. Zero friction.
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-3 text-foreground tracking-tight">
+            How It Works
           </h2>
-          <p className="text-foreground/80">
-            Navix adapts to your habits. Configure any gesture, eye trigger, or voice shortcut using your existing camera and mic.
+          <p className="text-lg md:text-xl font-medium text-primary mb-3">
+            Fully customizable control. Zero friction.
+          </p>
+          <p className="text-foreground/80 max-w-xl mx-auto">
+            Navix works with your existing webcam and microphone. Personalize every glance, gesture, and shortcut so your meetings adapt to you.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -45,7 +46,7 @@ export function HowItWorks() {
                 <f.icon className="w-6 h-6 text-primary-foreground" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">{f.title}</h3>
-              <p className="text-foreground/75 text-sm">{f.desc}</p>
+              <p className="text-foreground/75 text-sm leading-relaxed">{f.desc}</p>
             </Card>
           ))}
         </div>
