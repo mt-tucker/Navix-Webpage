@@ -22,23 +22,54 @@ interface FeedbackProps {
 const RATING_OPTIONS = [
   {
     value: "Loved it",
-    label: "🤩 Loved it!",
+    label: "🐧Loved it!",
     desc: "I would use this in my daily calls and meetings",
   },
   {
     value: "Interesting",
-    label: "👍 Very interesting",
+    label: "Very interesting",
     desc: "Great idea with clear potential",
   },
   {
     value: "Have doubts",
-    label: "🤔 Have doubts",
+    label: "Have doubts",
     desc: "Not sure if I would adapt to gesture controls",
   },
   {
     value: "Not convinced",
-    label: "👎 Not convinced",
+    label: "Not convinced",
     desc: "I prefer conventional mouse and keyboard controls",
+  },
+];
+
+const PLAN_OPTIONS = [
+  {
+    value: "Free ($0/mo)",
+    name: "Free",
+    price: "$0",
+    badge: "Basic",
+    desc: "Up to 5 gestures, 3h daily limit",
+  },
+  {
+    value: "Pro ($6/mo)",
+    name: "Pro",
+    price: "$6/mo",
+    badge: "Recommended",
+    desc: "Unlimited gestures, all apps & action mapping",
+  },
+  {
+    value: "Teams ($15/mo)",
+    name: "Teams",
+    price: "$15/mo",
+    badge: "For Teams",
+    desc: "Admin dashboard, shared presets & priority support",
+  },
+  {
+    value: "Undecided",
+    name: "Not sure yet",
+    price: "—",
+    badge: "Exploring",
+    desc: "I'd like to try the Beta version first",
   },
 ];
 
@@ -47,6 +78,7 @@ export function Feedback({
 }: FeedbackProps) {
   const [email, setEmail] = useState(initialEmail);
   const [rating, setRating] = useState("Loved it");
+  const [selectedPlan, setSelectedPlan] = useState("Pro ($6/mo)");
   const [whatToChange, setWhatToChange] = useState("");
   const [whatToRemove, setWhatToRemove] = useState("");
   const [whatToAdd, setWhatToAdd] = useState("");
@@ -56,7 +88,7 @@ export function Feedback({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email && !whatToChange && !whatToRemove && !whatToAdd && !rating) {
+    if (!email && !whatToChange && !whatToRemove && !whatToAdd && !rating && !selectedPlan) {
       toast.error("Please answer at least one question or enter your email.");
       return;
     }
@@ -66,6 +98,7 @@ export function Feedback({
     const submissionData = {
       email: email || "Not provided",
       rating,
+      selectedPlan,
       whatToChange: whatToChange || "No comments provided",
       whatToRemove: whatToRemove || "No comments provided",
       whatToAdd: whatToAdd || "No comments provided",
@@ -100,6 +133,7 @@ export function Feedback({
           _replyto: email || undefined,
           "User Email": submissionData.email,
           "Did they like the platform?": submissionData.rating,
+          "Which plan would you choose?": submissionData.selectedPlan,
           "What would you change?": submissionData.whatToChange,
           "What would you remove?": submissionData.whatToRemove,
           "What would you like to add?": submissionData.whatToAdd,
@@ -197,13 +231,62 @@ export function Feedback({
               </RadioGroup>
             </div>
 
-            {/* 2. What would you change? */}
+            {/* 2. Which plan would you choose? */}
+            <div>
+              <div className="flex items-center justify-between mb-1">
+                <Label className="text-base font-semibold text-foreground block">
+                  2. Which plan would you choose?
+                </Label>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Help us understand which subscription tier fits you best:
+              </p>
+              <RadioGroup
+                value={selectedPlan}
+                onValueChange={setSelectedPlan}
+                className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3"
+              >
+                {PLAN_OPTIONS.map((p) => {
+                  const isSelected = selectedPlan === p.value;
+                  return (
+                    <label
+                      key={p.value}
+                      htmlFor={`plan-${p.value}`}
+                      className={`flex flex-col justify-between p-3 rounded-xl border cursor-pointer transition-smooth ${
+                        isSelected
+                          ? "border-primary bg-primary/5 ring-1 ring-primary/30"
+                          : "border-border hover:border-primary/50 bg-background/50"
+                      }`}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between gap-1 mb-1.5">
+                          <div className="flex items-center gap-1.5">
+                            <RadioGroupItem value={p.value} id={`plan-${p.value}`} />
+                            <span className="font-bold text-foreground text-sm">
+                              {p.name}
+                            </span>
+                          </div>
+                          <span className="text-xs font-semibold text-primary">
+                            {p.price}
+                          </span>
+                        </div>
+                        <p className="text-xs text-muted-foreground line-clamp-2">
+                          {p.desc}
+                        </p>
+                      </div>
+                    </label>
+                  );
+                })}
+              </RadioGroup>
+            </div>
+
+            {/* 3. What would you change? */}
             <div>
               <Label htmlFor="what-to-change" className="text-base font-semibold text-foreground block">
-                2. What would you change?
+                3. What would you change?
               </Label>
               <p className="text-xs text-muted-foreground mb-2">
-                Aspects of the design, interactions, or control dynamics you would tweak:
+                Aspects of the design, interactions, or control dynamics you would modify:
               </p>
               <Textarea
                 id="what-to-change"
@@ -215,13 +298,13 @@ export function Feedback({
               />
             </div>
 
-            {/* 3. What would you remove? */}
+            {/* 4. What would you remove? */}
             <div>
               <Label htmlFor="what-to-remove" className="text-base font-semibold text-foreground block">
-                3. What would you remove?
+                4. What would you remove?
               </Label>
               <p className="text-xs text-muted-foreground mb-2">
-                Features or elements you feel are unnecessary, distracting, or add clutter:
+                Features or elements you feel are unnecessary or distracting:
               </p>
               <Textarea
                 id="what-to-remove"
@@ -233,13 +316,13 @@ export function Feedback({
               />
             </div>
 
-            {/* 4. What would you like to add? */}
+            {/* 5. What would you like to add? */}
             <div>
               <Label htmlFor="what-to-add" className="text-base font-semibold text-foreground block">
-                4. What would you like to add?
+                5. What would you like to add?
               </Label>
               <p className="text-xs text-muted-foreground mb-2">
-                New ideas, requested integrations (Discord, Slack, Meet), or custom actions:
+                New ideas, requested integrations:
               </p>
               <Textarea
                 id="what-to-add"

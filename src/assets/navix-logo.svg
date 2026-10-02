@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="navix-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="navix-accent" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#93C5FD" />
+      <stop offset="100%" stop-color="#60A5FA" />
+    </linearGradient>
+    <linearGradient id="navix-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#E0F2FE" stop-opacity="0.6" />
+    </linearGradient>
+    <filter id="navix-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#2563EB" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Base Circle with subtle border -->
+  <rect width="100" height="100" rx="28" fill="url(#navix-bg)" />
+  <rect x="1" y="1" width="98" height="98" rx="27" stroke="url(#navix-accent)" stroke-width="2" stroke-opacity="0.4" />
+
+  <!-- Dynamic Eye / Flow Orbit Arc -->
+  <path d="M 22 50 C 32 30, 68 30, 78 50 C 68 70, 32 70, 22 50 Z" 
+        stroke="url(#navix-accent)" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.35" />
+
+  <!-- Stylized Geometric "N" with Focal Node -->
+  <!-- Left stem -->
+  <path d="M 33 68 L 33 32" stroke="url(#navix-glow)" stroke-width="6.5" stroke-linecap="round" />
+  
+  <!-- Diagonal dynamic connection -->
+  <path d="M 33 32 L 67 68" stroke="url(#navix-glow)" stroke-width="6.5" stroke-linecap="round" />
+  
+  <!-- Right stem -->
+  <path d="M 67 68 L 67 32" stroke="url(#navix-accent)" stroke-width="6.5" stroke-linecap="round" />
+
+  <!-- Center "Iris / Focus" Pulse Node -->
+  <circle cx="50" cy="50" r="5" fill="#FFFFFF" filter="url(#navix-shadow)" />
+  <circle cx="50" cy="50" r="8" stroke="#93C5FD" stroke-width="1.5" opacity="0.8" />
+</svg>
